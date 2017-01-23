@@ -1,4 +1,5 @@
 require "sinatra"
+require "uri"
 
 set :bind, "0.0.0.0"
 
@@ -34,6 +35,6 @@ end
 
 post "/create" do
   save_content(params["title"], params["content"])
-  redirect "/#{params["title"]}"
+  redirect URI.escape("/#{params["title"]}")
 end
 
